@@ -25,7 +25,7 @@ const Courses = () => {
 
   return (
 
-    <div>
+    <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
       {courses.map((course)=>{
         return <Course course={course}/>
       }
@@ -40,11 +40,13 @@ function Course({course}){
       border: "2px solid black",
       margin:10,
       width:300,
-      minHeight:200
+     height:200
     }}>
 
        <Typography textAlign={"center"} variant="h6"> {course.title} </Typography>
        <Typography textAlign={"center"} variant="subtitle1"> {course.description} </Typography>
+    <img src= {course.imageLink} style={{width:150}}></img> 
+   
     </Card>
 }
 export default Courses

@@ -6,6 +6,7 @@ import axios from 'axios'
 const AddCourse = () => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [image, setImage] = useState("")
   return (
     <div>
         <center>
@@ -19,8 +20,7 @@ const AddCourse = () => {
             setTitle(e.target.value)
           }}
         />
-        <br /> <br />
-        <TextField
+           <TextField
           fullWidth={true}
           id="outlined-basic"
           label="Description"
@@ -29,14 +29,24 @@ const AddCourse = () => {
             setDescription(e.target.value)
           }}
         />
-        <br />
-        <br />
+
+<TextField
+          
+          onChange={(e)=> {
+            setImage(e.target.value)
+          }}
+          fullWidth={true}
+          label="Image Link"
+          variant="outlined"
+        />
+
+      
         <Button size={"large"} 
         variant="contained"
         onClick={async()=>{
            
             try{
-                await axios.post('http://localhost:3000/admin/courses', {title:title, description:description},{headers:{Authorization:'bearer '+ localStorage.getItem('token')}});
+                await axios.post('http://localhost:3000/admin/courses', {title:title, description:description,imageLink:image},{headers:{Authorization:'bearer '+ localStorage.getItem('token')}});
                 alert('course added successfully')
             }catch(err){
                 console.log("error something");
