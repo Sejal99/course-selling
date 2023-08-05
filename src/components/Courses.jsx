@@ -40,12 +40,12 @@ function Course({course}){
       border: "2px solid black",
       margin:10,
       width:300,
-     height:200
+     height:300
     }}>
 
        <Typography textAlign={"center"} variant="h6"> {course.title} </Typography>
        <Typography textAlign={"center"} variant="subtitle1"> {course.description} </Typography>
-    <img src= {course.imageLink} style={{width:150}}></img> 
+    <img src= {course.imageLink} style={{width:400}}></img> 
    
     </Card>
 }
