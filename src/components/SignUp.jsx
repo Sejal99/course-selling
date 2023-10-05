@@ -1,70 +1,43 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import { Card, Typography } from "@mui/material";
-import axios from 'axios'
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+
 const Signup = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+  const navigate=useNavigate();
+  const handleSubmit=()=>{
+navigate('/signin')
+  }
+ 
   return (
+    
     <div>
-        <center>
-      <div style={{
-        marginTop:150,
-          marginBottom:10}}>
-            <Typography variant={"h6"}>
-        Welcome To Coursera
-        </Typography>
-        </div>
-     
-      <Card variant={"outlined"} style={{ width: 400, padding: 20,marginTop:10 }}>
-        <TextField
-          fullWidth={true}
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-          onChange={(e)=> {
-            setEmail(e.target.value)
-          }}
-        />
-        <br /> <br />
-        <TextField
-          fullWidth={true}
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          onChange={(e)=> {
-            setPassword(e.target.value)
-          }}
-        />
-        <br />
-        <br />
-        <Button size={"large"} 
-        variant="contained"
-        onClick={async()=>{
-            console.log(email);
-            console.log(password);
-            
-            try{
-                await axios.post('http://localhost:3000/admin/signup', {username: email, password: password} );
-                alert('Admin signedUp successfully')
-                window.location="/"
-               
-            }catch(err){
-                console.log("error something");
-                console.log(err);
-                
-            }
-           
+      <form onSubmit={handleSubmit}>
+      <div style={{height:"60vh", display:"flex",flexDirection:"column", alignItems:"center",justifyContent:"center",gap:"10px"}} >
+    <h1>Signup Here</h1>
+      <div style={{display:"flex",alignItems:"center",flexDirection:"column",gap:"10px"}}>
+        
+      <div >
+      <input  style={{padding:"10px",borderRadius:"10px"}}type='email'  placeholder='Username' />
+      </div>
 
-        }}
-        >
-          SignUp
-        </Button>
-      </Card>
-      </center>
-    </div>
-  );
-};
+      <div>
+      <input style={{padding:"10px",borderRadius:"10px"}} type='password'  placeholder='password'/>
+      </div>
 
-export default Signup;
+      <div>
+      <button type='Submit' style={{padding:"10px",borderRadius:"10px"}}>Signup</button>
+      </div>
+      </div>
+      <div>Already registered? <Link to={'/signin'}>Signin</Link> to continue</div>
+      </div>
+
+      </form>
+      
+    
+
+      </div>
+    
+  )
+}
+
+export default Signup

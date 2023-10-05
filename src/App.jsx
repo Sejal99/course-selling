@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignIn from './components/SignIn';
-import Signup from './components/signup';
-import AppBar from './components/Appbar';
-import AddCourse from './components/AddCourse';
-import Courses from './components/Courses';
-import Course from './components/Course';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import Signup from './components/SignUp';
+import Signin from './components/Signin';
+import Page from './components/Page';
+import Navbar from './components/Navbar';
+
 function App() {
     return (
       <div style={{
@@ -12,16 +11,19 @@ function App() {
         height:"100vh",
         backgroundColor:"#eeeeee"
       }}>
-        <AppBar/>
-        <Router>
-            <Routes>
-                <Route path="/SignUp" element={<Signup />} />
-                <Route path="/SignIn" element={<SignIn/>} />
-                <Route path="/addcourse" element={<AddCourse/>} />
-                <Route path="/course/:courseId" element={<Course/>} />
-                <Route path="/courses" element={<Courses/>} />
-            </Routes>
-        </Router>
+        <BrowserRouter>
+
+        <Navbar/>
+          <Routes>
+          <Route path={"/signup"} element={<Signup />} />
+          <Route path={"/signin"} element={<Signin />} />
+          <Route path={"/page"} element={<Page />} />
+        
+          </Routes>
+        
+
+        </BrowserRouter>
+      
         </div>
     );
 }
